@@ -3,29 +3,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Angular Material style sheet -->
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" href="css/app.css">
 </head>
-<body ng-app="BlankApp" ng-cloak>
-  <!--
-    Your HTML content here
-  -->  
-  Hello
-  <!-- Angular Material requires Angular.js Libraries -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<body ng-app="vffApp" ng-controller="vffCtrl" layout="column" ng-cloak>
+	<md-sidenav md-component-id="menu">
+		<md-toolbar layout="row">
+			MENU
+		</md-toolbar>
+		<md-list>
+			<md-list-item ng-repeat="menuItem in selectedMenu">
+				<md-button ng-click="selectMenu(menuItem);">
+					{{ menuItem.name }}
+				</md-button>
+			</md-list-item>		
+		</md-list>
+	</md-sidenav>
+	
+	<md-toolbar layout="row" layout-align="space-between center" style="background-color:white;color:black;">
+		<md-button ng-click="toggleMenu()">
+			<img ng-src="images/menu_logo.jpg" class="md-card-image" alt="Main menu">
+		</md-button>
+		
+		<md-button href="/"  title="Launch Google.com in new window" aria-label="ValleyForge.com" >
+			<img src="images/logo.svg" alt="image caption">
+		</md-button>
+		
+		<div>
+			<md-button>
+				<img ng-src="images/search_logo.jpg" class="md-card-image" alt="Search">
+			</md-button>
+			<md-button id="login_button" ng-click="showLogin()">
+				Login
+			</md-button>
+		</div>
+	</md-toolbar>
+  
+	<md-content> 
+		<md-grid-list md-cols-gt-sm="4" md-cols-sm="2" md-cols-xs="1" md-gutter="4px" md-row-height="475:490">
+			<md-grid-tile ng-repeat="imgItem in mainImages" >
+				<md-card layout="row" layout-align="center center">
+					<img ng-src="{{ imgItem.src }}" class="md-card-image">
+					<div class="parent-center">{{ imgItem.name }}</div>
+					<div class="overlay"></div>
+				</md-card>
+			</md-grid-tile>
+		</md-grid-list>
+	</md-content>
 
-  <!-- Angular Material Library -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+	<!-- Angular Material requires Angular.js Libraries -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+	<!-- Angular Material Library -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
   
-  <!-- Your application bootstrap  -->
-  <script type="text/javascript">    
-    /**
-     * You must include the dependency on 'ngMaterial' 
-     */
-    angular.module('BlankApp', ['ngMaterial']);
-  </script>
+	<!-- App JS  -->
+	<script>document.write("<script type='text/javascript' src='js/app.js?v=" + Date.now() + "'><\/script>");</script>
   
+	</script>
 </body>
 </html>
 
