@@ -133,7 +133,7 @@ angular
 	})	
 	.directive('ngMouseWheelDown', function() {
         return function(scope, element, attrs) {
-            element.bind("DOMMouseScroll mousewheel onmousewheel", function(event) {
+            element.bind("DOMMouseScroll mousewheel onmousewheel MozMousePixelScroll wheel", function(event) {
 						scope.closeSplash();
                         // cross-browser wheel delta
                         var event = window.event || event; // old IE support
