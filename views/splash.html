@@ -1,0 +1,64 @@
+<div id="images" ng-mouse-wheel-down>
+	<li ng-repeat="img in splashImages"><img ng-src="{{ img.src }}" ></li>	
+
+	<div id="scroll-info" class="show" ng-click="closeSplash()">
+		<a>scroll<br/><div>></div></a>
+	</div>
+	<md-toolbar class="footer" hide show-gt-md>
+        <div class="md-toolbar-tools" layout="row" >
+			<div>&#169; 2016 Valley Forge Fabric, Inc.</div>
+			<span flex></span>
+			<md-button aria-label="Contac Us">CONTACT US</md-button>
+			<md-button aria-label="Privaci Policy">PRIVACY POLICY</md-button>
+			<md-button aria-label="TERMS AND CONDITIONS">TERMS AND CONDITIONS</md-button>
+			<md-button class="md-fab md-mini" ng-disabled="true" aria-label="Favorite">
+				<a href="//www.weaveup.com" class="icon icon-weaveup" target="_blank" tooltip="Start customizing on WeaveUp"> </a>
+			</md-button>			
+			<md-button class="md-fab md-mini"  aria-label="Favorite">
+				<a href="//www.facebook.com/valleyforgefabrics" class="icon icon-facebook" target="_blank" tooltip="Follow us on Facebook"> </a>
+			</md-button>
+			<md-button class="md-fab md-mini" aria-label="Favorite">
+				<a href="//www.instagram.com/valleyforgefabrics" class="icon icon-instagram" target="_blank" tooltip="Follow us on Instagram"> </a>
+			</md-button>
+			<md-button class="md-fab md-mini" aria-label="Favorite">
+				<a href="//twitter.com/VFFabrics" class="icon icon-twitter" target="_blank" tooltip="Follow us on Twitter"> </a>
+			</md-button>
+			<md-button class="md-fab md-mini" aria-label="Favorite">
+				<a href="//www.youtube.com/user/ValleyForgeFabrics" class="icon icon-youtube" target="_blank" tooltip="Subscribe and watch us on Youtube"> </a>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-toolbar class="footer" hide-gt-md>
+        <div hide-gt-md><br/>
+			<div class="md-toolbar-tools" layout="col" layout-align="center center">
+				<md-button class="md-fab md-mini" ng-disabled="true" aria-label="Favorite">
+					<a href="//www.weaveup.com" class="icon icon-weaveup" target="_blank" tooltip="Start customizing on WeaveUp"> </a>
+				</md-button>			
+				<md-button class="md-fab md-mini"  aria-label="Favorite">
+					<a href="//www.facebook.com/valleyforgefabrics" class="icon icon-facebook" target="_blank" tooltip="Follow us on Facebook"> </a>
+				</md-button>
+				<md-button class="md-fab md-mini" aria-label="Favorite">
+					<a href="//www.instagram.com/valleyforgefabrics" class="icon icon-instagram" target="_blank" tooltip="Follow us on Instagram"> </a>
+				</md-button>
+				<md-button class="md-fab md-mini" aria-label="Favorite">
+					<a href="//twitter.com/VFFabrics" class="icon icon-twitter" target="_blank" tooltip="Follow us on Twitter"> </a>
+				</md-button>
+				<md-button class="md-fab md-mini" aria-label="Favorite">
+					<a href="//www.youtube.com/user/ValleyForgeFabrics" class="icon icon-youtube" target="_blank" tooltip="Subscribe and watch us on Youtube"> </a>
+				</md-button>
+			</div>
+			
+			<md-divider style="margin:10px 50px;></md-divider>	
+				
+			<div class="md-toolbar-tools" layout="col" layout-align="center center">
+				<div>&#169; 2016 Valley Forge Fabric, Inc.</div>
+			</div>
+			<div class="md-toolbar-tools" layout="col" layout-align="center center">
+				<md-button aria-label="Contac Us">CONTACT US</md-button>
+				<md-button aria-label="Privaci Policy">PRIVACY POLICY</md-button>
+				<md-button aria-label="TERMS AND CONDITIONS">TERMS AND CONDITIONS</md-button>
+			</div>
+
+		</div>
+    </md-toolbar>
+</div>

@@ -1,27 +1,21 @@
 <html lang="en" >
-<head> 
+<head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Angular Material style sheet -->
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
   <link rel="stylesheet" href="css/app.css">
+  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
 </head>
-<body ng-app="vffApp" ng-controller="vffCtrl" layout="column" ng-cloak>
-	<md-sidenav md-component-id="menu">
-		<md-toolbar layout="row">
-			MENU
-		</md-toolbar>
-		<md-list>
-			<md-list-item ng-repeat="menuItem in selectedMenu">
-				<md-button ng-click="selectMenu(menuItem);">
-					{{ menuItem.name }}
-				</md-button>
-			</md-list-item>		
-		</md-list>
-	</md-sidenav>
+<body ng-app="vffApp" ng-controller="vffCtrl as v" data-ng-init="v.showSplash()" layout="column" ng-cloak>
 	
-	<md-toolbar layout="row" layout-align="space-between center" style="background-color:white;color:black;">
-		<md-button ng-click="toggleMenu()">
-			<img ng-src="images/menu_logo.jpg" class="md-card-image" alt="Main menu">
+	<md-toolbar layout="row" layout-align="space-between center" class="md-medium-tall">
+		<md-button ng-click="toggleMenu()" ng-if="parentMenu == mainMenu">
+			<h1 ng-if="!sidenavDisplayed()">&#x2630;</h1>
+			<h1 ng-if="sidenavDisplayed()">X</h1>
+		</md-button>
+		
+		<md-button ng-click="backMenu(parentMenu);" ng-if="parentMenu != mainMenu">
+			<h2>< {{ parentMenu.name }}</h2>
 		</md-button>
 		
 		<md-button href="/"  title="Launch Google.com in new window" aria-label="ValleyForge.com" >
@@ -29,16 +23,52 @@
 		</md-button>
 		
 		<div>
-			<md-button>
+			<md-button hide show-gt-sm>
 				<img ng-src="images/search_logo.jpg" class="md-card-image" alt="Search">
 			</md-button>
-			<md-button id="login_button" ng-click="showLogin()">
+			<md-button id="login_button" ng-click="v.showLogin()">
 				Login
 			</md-button>
 		</div>
 	</md-toolbar>
   
 	<md-content> 
+
+		<md-sidenav md-component-id="menu" layout="row" layout-align="center top" ng-class="{fullScreen: $mdMedia('xs'), fullScreen: $mdMedia('sm')}">
+			<md-list hide show-gt-sm>
+				<md-list-item ng-repeat="menuItem in selectedMenu">
+					<md-button ng-click="selectMenu(menuItem);" flex>
+						{{ menuItem.name }}
+					</md-button>
+				</md-list-item>		
+			</md-list>
+			<md-list hide-gt-sm>
+				<md-list-item ng-repeat="menuItem in mainMenu">
+					<div class="md-list-item-text">
+						<md-button ng-click="selectMenu(menuItem);" flex>
+							{{ menuItem.name }}
+						</md-button>
+						<md-list class="subHeader">
+							<md-list-item ng-repeat="subMenuItem in menuItem.menu" ng-if="selectedMenu == menuItem.menu">
+								<md-button ng-click="selectMenu(subMenuItem)" flex>
+									{{ subMenuItem.name }}
+								</md-button>
+							</md-list-item>
+						</md-list>
+						<md-divider ng-if="selectedMenu == menuItem.menu"><md-divider>
+					</div>
+				</md-list-item>	
+
+				<md-list-item>
+				    <md-input-container class="md-icon-float md-block">
+						<label>Search</label>
+						<md-icon class="search"><img ng-src="images/search_logo.jpg" class="md-card-image" alt="Search"></md-icon>
+						<input  type="text">
+					</md-input-container>
+				</md-list-item>
+			</md-list>			
+		</md-sidenav>
+	
 		<md-grid-list md-cols-gt-sm="4" md-cols-sm="2" md-cols-xs="1" md-gutter="4px" md-row-height="475:490">
 			<md-grid-tile ng-repeat="imgItem in mainImages" >
 				<md-card layout="row" layout-align="center center">
@@ -48,9 +78,11 @@
 				</md-card>
 			</md-grid-tile>
 		</md-grid-list>
+		
 	</md-content>
 
 	<!-- Angular Material requires Angular.js Libraries -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
