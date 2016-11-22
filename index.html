@@ -34,7 +34,7 @@
   
 	<md-content> 
 
-		<md-sidenav md-component-id="menu" layout="row" layout-align="center top" ng-class="{fullScreen: $mdMedia('xs'), fullScreen: $mdMedia('sm')}">
+		<md-sidenav md-component-id="menu" layout="row" layout-align="center top" ng-class="{'fullScreen': ($mdMedia('xs') || $mdMedia('sm')) }">
 			<md-list hide show-gt-sm>
 				<md-list-item ng-repeat="menuItem in selectedMenu">
 					<md-button ng-click="selectMenu(menuItem);" flex>
